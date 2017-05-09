@@ -8,7 +8,7 @@ class ToWatch extends Component {
     return (
       <div className="To-Watch">
         <h3>To Watch</h3>
-        <ul>
+        <ul className="watch-list">
           {
             this.props.watchlist.length > 0
               ?

@@ -1,3 +1,4 @@
+/* Media Queries */
 body {
   text-align: center; }
 
@@ -20,5 +21,14 @@ ul {
 
 a:hover {
   cursor: pointer; }
+
+@media (max-width: 450px) {
+  .watch-list {
+    text-align: left;
+    margin-left: 0; } }
+@media (min-width: 451px) and (max-width: 775px) {
+  .watch-list {
+    text-align: left;
+    margin-left: 0; } }
 
 /*# sourceMappingURL=index.css.map */

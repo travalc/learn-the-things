@@ -1,3 +1,40 @@
+
+$smartphone-max-width: 450px;
+$tablet-max-width: 775px;
+$desktop-min-width: 776px;
+$large-min-width: 1300px;
+
+/* Media Queries */
+@mixin smartphone {
+  @media (max-width: #{$smartphone-max-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$smartphone-max-width + 1px}) and (max-width: #{$tablet-max-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-min-width}) {
+    @content;
+  }
+}
+
+@mixin tabletAndDesktop {
+  @media (min-width:#{$smartphone-max-width + 1px}) {
+    @content;
+  }
+}
+
+@mixin largeScreen {
+  @media (min-width: $large-min-width) {
+    @content;
+  }
+}
+
 body {
   text-align: center;
 }
@@ -23,4 +60,15 @@ ul {
 
 a:hover {
   cursor: pointer;
+}
+
+.watch-list {
+  @include smartphone {
+    text-align: left;
+    margin-left: 0;
+  }
+  @include tablet {
+    text-align: left;
+    margin-left: 0;
+  }
 }
