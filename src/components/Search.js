@@ -22,6 +22,8 @@ class Search extends Component {
       modalIsOpen: false,
       searchResults: null
     }
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
   search() {
     const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
@@ -38,7 +40,6 @@ class Search extends Component {
   openModal() {
   this.setState({modalIsOpen: true});
   }
-
 
 
   closeModal() {
@@ -69,14 +70,14 @@ class Search extends Component {
           contentLabel="Search Results"
         >
           <h3>Search Results</h3>
-          <ul>
+          <ul className="search-results">
             {
               this.state.searchResults !== null
                 ?
                   this.state.searchResults.map(item => {
                     return (
                       <li key={item.etag}>
-                        <a href={'https://www.youtube.com/watch?v=' + item.id.videoId}>{item.snippet.title}</a>
+                        <a target="_blank" href={'https://www.youtube.com/watch?v=' + item.id.videoId}>{item.snippet.title}</a>
                       </li>
                     )
                   })
