@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadResults } from '../actions';
+import { addToList } from '../actions';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -78,6 +78,13 @@ class Search extends Component {
                     return (
                       <li key={item.etag}>
                         <a target="_blank" href={'https://www.youtube.com/watch?v=' + item.id.videoId}>{item.snippet.title}</a>
+                        <button
+                          className="btn btn-success"
+                          type="button"
+                          onClick={() => this.props.addToList(item)}
+                        >
+                          Add To To-Watch
+                        </button>
                       </li>
                     )
                   })
@@ -91,4 +98,4 @@ class Search extends Component {
   }
 }
 
-export default connect(null, { loadResults })(Search);
+export default connect(null, { addToList })(Search);

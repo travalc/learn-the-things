@@ -15,5 +15,7 @@ ul {
 .search-results {
   text-align: left;
   margin-left: 0; }
+  .search-results button {
+    display: block; }
 
 /*# sourceMappingURL=index.css.map */

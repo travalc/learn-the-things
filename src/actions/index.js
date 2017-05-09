@@ -1,9 +1,9 @@
-import { LOAD_RESULTS } from '../constants';
+import { ADD_TO_LIST } from '../constants';
 
-export function loadResults(results) {
+export function addToList(item) {
   const action = {
-    type: LOAD_RESULTS,
-    results: results
+    type: ADD_TO_LIST,
+    item: item
   }
   return action;
 }

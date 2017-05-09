@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import SearchResults from './reducer_search_results';
+import ToWatch from './reducer_to_watch';
 
 export default combineReducers ( {
-  SearchResults
+  ToWatch
 });
