@@ -18,4 +18,7 @@ ul {
   .search-results button {
     display: block; }
 
+a:hover {
+  cursor: pointer; }
+
 /*# sourceMappingURL=index.css.map */

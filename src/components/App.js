@@ -12,7 +12,7 @@ class App extends Component {
         <h1 className='title'>Learn The Things</h1>
         <Search />
         <Video />
-        <ToWatch />
+        <ToWatch watchlist={this.props.state.ToWatch}/>
       </div>
     )
   }
