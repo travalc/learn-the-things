@@ -11,7 +11,7 @@ class App extends Component {
       <div className='App'>
         <h1 className='title'>Learn The Things</h1>
         <Search />
-        <Video />
+        <Video video={this.props.state.currentVideo}/>
         <ToWatch watchlist={this.props.state.ToWatch}/>
       </div>
     )
