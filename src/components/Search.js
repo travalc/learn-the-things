@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadResults } from '../actions';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      modalIsOpen: false,
+      searchResults: null
     }
   }
   search() {
@@ -18,8 +32,17 @@ class Search extends Component {
     })
     .then(response => response.json())
     .then(json => {
-      this.props.loadResults(json.items);
+      this.setState({searchResults: json.items});
     });
+  }
+  openModal() {
+  this.setState({modalIsOpen: true});
+  }
+
+
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
   render() {
     return (
@@ -31,10 +54,37 @@ class Search extends Component {
         <button
           className="btn btn-primary"
           type="button"
-          onClick={() => this.search()}
+          onClick={() => {
+            this.search();
+            this.openModal();
+          }}
         >
           Search
         </button>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Search Results"
+        >
+          <h3>Search Results</h3>
+          <ul>
+            {
+              this.state.searchResults !== null
+                ?
+                  this.state.searchResults.map(item => {
+                    return (
+                      <li key={item.etag}>
+                        <a href={'https://www.youtube.com/watch?v=' + item.id.videoId}>{item.snippet.title}</a>
+                      </li>
+                    )
+                  })
+                :
+                  <div></div>
+            }
+          </ul>
+        </Modal>
       </div>
     )
   }
