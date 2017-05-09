@@ -81,7 +81,10 @@ class Search extends Component {
                         <button
                           className="btn btn-success"
                           type="button"
-                          onClick={() => this.props.addToList(item)}
+                          onClick={() => {
+                            this.props.addToList(item);
+                            this.closeModal();
+                          }}
                         >
                           Add To To-Watch
                         </button>
