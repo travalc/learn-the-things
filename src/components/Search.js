@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadResults } from '../actions';
 
 class Search extends Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class Search extends Component {
     })
     .then(response => response.json())
     .then(json => {
-      console.log(json);
+      this.props.loadResults(json.items);
     });
   }
   render() {
@@ -38,4 +40,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default connect(null, { loadResults })(Search);
